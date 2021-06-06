@@ -43,7 +43,12 @@
           </div>
           {% for hemi in mars.mars_hemi_image_urls %}
           <div class="col-md-6">
-              <img src={{hemi.img_urll}}>
+              <div class="thumbnail">
+                <img src={{hemi.img_url}}>
+                <div class="caption">
+                    <h2>{{hemi.title}}</h2>
+                </div>
+              </div>
           </div>
           {% endfor %}
       </div>
