@@ -37,7 +37,7 @@ def scrape():
     #Setup splinter instance
     browser = Browser('chrome', **executable_path, headless=False)
 
-    #Visit data-class-jpl
+    #Visit data-class-jpl website
     JPL_url= 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
     browser.visit(JPL_url)
 
@@ -51,7 +51,7 @@ def scrape():
     href = a['href']
     featured_image_url = (f'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{href}')
 
-    #Add to mars.dict dictionary
+    #Add feature image URL to mars.dict dictionary
     mars_dict['featured_image_url'] = featured_image_url
 
     #Shutdown splinter instance
@@ -67,7 +67,7 @@ def scrape():
     #Convert first table to pandas dataframe
     mars_df = tables[0]
 
-    #Rename columns of dataframe
+    #Rename columns of dataframe and reset index to Characteristic column
     mars_df.rename(columns={ 0: 'Characteristic', 1: "Mars"}, inplace=True)
     mars_df.set_index('Characteristic', inplace=True)
 
@@ -89,6 +89,8 @@ def scrape():
     html = browser.html
     soup = bs(html, 'html.parser')
     results = soup.find_all('div', class_='description')
+
+    #Create list to store hemi URLs
     mars_hemi_image_urls = []
 
     #Loop through each of the four hemisphere pages
