@@ -1,6 +1,4 @@
-# web-scraping-challenge
-This repository is for DU Data Analytics Bootcamp web-scraping-challenge homework.  There are 2 sections to this project.
-
+# Mission to Mars
 ## Section 1
 During Section 1, I was able to use the splinter and beautiful soup libraries in Jupyter Notebook to scrape data on Mars from 3 different websites.  I was able to scrape several different types of data including text, headlines, and image urls. The image urls were a bit tricky because they had to be put into a for loop that would click through the page based off a html tag that I had pulled.  Once on the new page the image url could be added to a dictionary.  All data that was scraped was added to a dictionary for use in the next section.
 
